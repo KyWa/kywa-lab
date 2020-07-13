@@ -1,0 +1,9 @@
+[ovirt:children]
+hosted-engine
+ovirt-hosts
+
+[hosted-engine]
+virt.kywa.io
+
+[ovirt-hosts]
+vhost1.kywa.io

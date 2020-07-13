@@ -1,0 +1,9 @@
+---
+- name: AUTH | ovirt-auth
+  ovirt_auth:
+    username: "{{ ovirt_username }}"
+    password: "{{ ovirt_password }}"
+    url: "{{ ovirt_url }}"
+    insecure: true
+  run_once: true
+  delegate_to: localhost

@@ -1,0 +1,7 @@
+ipv4_netmask: "255.255.255.0"
+ipv4_cidr: 24
+ipv4_def_route: "10.0.0.1"
+dns_servers: 10.0.0.1 8.8.8.8
+dns_search: kywa.io
+boot_protocol: static
+nic_name: enp1s0

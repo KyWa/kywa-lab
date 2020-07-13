@@ -1,0 +1,8 @@
+---
+- hosts: games
+  gather_facts: false
+  tasks:
+  - name: init
+    import_role:
+      name: misc
+

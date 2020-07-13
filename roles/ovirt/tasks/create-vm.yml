@@ -1,0 +1,42 @@
+---
+- name: create vm
+  ovirt_vm:
+    wait: true
+    timeout: 2400
+    auth: "{{ ovirt_auth }}"
+    name: "{{ inventory_hostname }}"
+    comment: ""
+    description: ""
+    template: "{{ ovirt_vm_template }}"
+    operating_system: "{{ vm_os }}"
+    cluster: "Default"
+    cpu_cores: 1
+    cpu_sockets: 2
+    memory: "4GiB"
+    memory_guaranteed: "2GiB"
+    high_availability: false
+    state: running
+    storage_domain: "{{ ovirt_storage_domain }}"
+    clone: true
+    disk_format: raw
+    cloud_init:
+      dns_servers: "{{ dns_servers }}"
+      dns_search: "{{ dns_search }}"
+      nic_boot_protocol: "{{ boot_protocol }}"
+      nic_ip_address: "{{ ipv4_addr }}"
+      nic_netmask: "{{ ipv4_netmask }}"
+      nic_gateway: "{{ ipv4_def_route }}"
+      nic_name: "{{ nic_name }}"
+      nic_on_boot: true
+      host_name: "{{ inventory_hostname }}"
+      custom_script: |
+        write_files:
+         - content: |
+             Hello world!
+           path: /tmp/greeter.txt
+           permissions: '0644'
+      authorized_ssh_keys: "{{ ansible_ssh_key }}"
+      user_name: root
+      root_password: "{{ root_user_password }}"
+    cloud_init_persist: true
+  delegate_to: localhost

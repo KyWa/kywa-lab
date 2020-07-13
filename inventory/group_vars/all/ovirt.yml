@@ -1,0 +1,4 @@
+ovirt_url: "https://virt.kywa.io/ovirt-engine/api"
+ovirt_vm_template: "cent8-template"
+vm_os: "rhel_8x64"
+ovirt_storage_domain: "vm-storage"
