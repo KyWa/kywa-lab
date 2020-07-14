@@ -2,7 +2,6 @@
 - name: delete vm
   ovirt_vm:
     wait: true
-    timeout: 2400
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"
     state: absent

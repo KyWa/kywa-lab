@@ -29,12 +29,6 @@
       nic_name: "{{ nic_name }}"
       nic_on_boot: true
       host_name: "{{ inventory_hostname }}"
-      custom_script: |
-        write_files:
-         - content: |
-             Hello world!
-           path: /tmp/greeter.txt
-           permissions: '0644'
       authorized_ssh_keys: "{{ ansible_ssh_key }}"
       user_name: root
       root_password: "{{ root_user_password }}"

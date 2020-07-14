@@ -1,0 +1,11 @@
+[openshift]
+
+[etcd
+
+[masters]
+
+[infra]
+
+[apps]
+
+[new_nodes]
