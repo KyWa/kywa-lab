@@ -1,11 +1,19 @@
-[openshift]
+[openshift:children]
+etcd
+masters
+infra
+apps
 
-[etcd
+[etcd]
+okdm01.kywa.io
 
 [masters]
+okdm01.kywa.io
 
 [infra]
+okdi01.kywa.io
 
 [apps]
+okdc01.kywa.io
 
 [new_nodes]
