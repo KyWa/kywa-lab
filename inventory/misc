@@ -1,5 +1,8 @@
 [media]
 plex.kywa.io
 
-[games]
+[games:children]
+minecraft
+
+[minecraft]
 mc.kywa.io

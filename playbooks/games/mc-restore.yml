@@ -1,0 +1,45 @@
+---
+###
+#
+# Playbook will backup an existing minecraft installation. Default var for install path is /opt/minecraft
+#
+###
+
+- hosts: minecraft
+  gather_facts: false
+  tasks:
+
+  - name: mount backup share
+    mount:
+      path: /mnt
+      src: "{{ minecraft_backup_share}}"
+      fstype: nfs
+      state: mounted
+
+  - name: stop minecraft service
+    systemd:
+      name: minecraft
+      state: stopped
+
+  - name: place Systemd unit
+    copy:
+      remote_src: yes
+      dest: "{{ systemd_unit_file }}"
+      src: /mnt/minecraft.service
+
+  - name: extract and copy minecraft directory
+    unarchive:
+      path: "/opt"
+      src: "/mnt/minecraft-backup.tgz"
+      remote_src: yes
+
+  - name: start minecraft service
+    systemd:
+      name: minecraft
+      state: started
+      enabled: yes
+
+  - name: unmount backup share
+    mount:
+      path: /mnt
+      state: unmounted
