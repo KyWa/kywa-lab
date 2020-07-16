@@ -5,15 +5,20 @@ infra
 apps
 
 [etcd]
-okdm01.kywa.io
+okd01.kywa.io
 
 [masters]
-okdm01.kywa.io
+okd01.kywa.io
 
 [infra]
-okdi01.kywa.io
+okd04.kywa.io
 
 [apps]
-okdc01.kywa.io
+okd07.kywa.io
+
+[nodes]
+okd01.kywa.io openshift_node_group_name='node-config-master'
+okd04.kywa.io openshift_node_group_name='node-config-infra'
+okd07.kywa.io openshift_node_group_name='node-config-compute'
 
 [new_nodes]
