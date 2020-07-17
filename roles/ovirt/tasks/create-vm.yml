@@ -12,8 +12,8 @@
     cluster: "Default"
     cpu_cores: 1
     cpu_sockets: 2
-    memory: "4GiB"
-    memory_guaranteed: "2GiB"
+    memory: "16GiB"
+    memory_guaranteed: "4GiB"
     high_availability: false
     state: running
     storage_domain: "{{ ovirt_storage_domain }}"

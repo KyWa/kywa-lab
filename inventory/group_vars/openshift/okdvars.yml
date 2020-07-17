@@ -1,1 +1,55 @@
+# VM Provisioning
+ovirt_vm_template: cent7-template
+
+# OKD Specific
 openshift_deployment_type: origin
+openshift_disable_check: docker_storage,docker_storage_driver
+ansible_service_broker_install: false
+openshift_release: '3.11'
+openshift_image_tag: 'v3.11'
+containerized: true
+
+
+openshift_node_groups:
+  - name: node-config-master 
+    labels:
+      - 'node-role.kubernetes.io/master=true' 
+    edits: [] 
+
+  - name: node-config-infra
+    labels:
+      - 'node-role.kubernetes.io/infra=true'
+    edits: []
+
+  - name: node-config-compute
+    labels:
+      - 'node-role.kubernetes.io/compute=true'
+    edits: []
+
+# Auth
+openshift_master_identity_providers: [{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
+openshift_master_htpasswd_users: {'kwalker': 'Ashafar15178404$'}
+
+
+# Registry
+openshift_hosted_registry_replicas: 1
+openshift_hosted_registry_selector: "node-role.kubernetes.io/infra=true"
+
+# Router
+openshift_hosted_router_selector: "node-role.kubernetes.io/infra=true"
+openshift_hosted_router_create_certificate: true
+
+# Console
+openshift_web_console_install: true
+
+# Masters
+openshift_master_api_port: 443
+openshift_master_console_port: 443
+openshift_master_cluster_hostname: console-int.okd.kywa.io
+openshift_master_cluster_public_hostname: console.okd.kywa.io
+openshift_master_default_subdomain: okd.kywa.io
+openshift_master_bootstrap_auto_approve: true
+
+# Infra
+
+# Compute
