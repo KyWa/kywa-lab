@@ -4,4 +4,3 @@ ipv4_def_route: "10.0.0.1"
 dns_servers: 10.0.0.1 8.8.8.8
 dns_search: kywa.io
 boot_protocol: static
-nic_name: eth0

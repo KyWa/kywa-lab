@@ -1,6 +1,3 @@
-# VM Provisioning
-ovirt_vm_template: cent7-template
-
 # OKD Specific
 openshift_deployment_type: origin
 openshift_disable_check: docker_storage,docker_storage_driver

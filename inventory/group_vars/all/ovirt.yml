@@ -1,3 +1,2 @@
 ovirt_url: "https://virt.kywa.io/ovirt-engine/api"
-vm_os: "rhel_8x64"
 ovirt_storage_domain: "vm-storage"
