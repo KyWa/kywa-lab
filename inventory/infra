@@ -7,3 +7,6 @@ virt.kywa.io
 
 [ovirt-hosts]
 vhost1.kywa.io
+
+[gitlab]
+git.kywa.io
