@@ -1,5 +1,0 @@
----
-- name: Update Packages
-  yum:
-    name: chrony
-    state: latest

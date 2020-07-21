@@ -1,3 +1,0 @@
----
-- name: backup minecraft
-  shell: "tar /opt/minecraft"
