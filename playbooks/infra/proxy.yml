@@ -1,0 +1,20 @@
+---
+
+# ansible-playbook -i inventory/filename playbook/ovirt/create-vm.yml --limit="hostname"
+
+- hosts: proxy
+  gather_facts: false
+  tasks:
+
+  - name: ovirt-auth
+    import_role:
+      name: ovirt
+
+  - name: create-vm
+    import_role:
+      name: ovirt
+      tasks_from: create-vm.yml
+
+  - name: proxy-config
+    import_role:
+      name: haproxy
