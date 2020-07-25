@@ -1,6 +1,6 @@
 [ovirt:children]
-hosted-engine
-ovirt-hosts
+hostedengine
+ovirthosts
 
 [hostedengine]
 virt.kywa.io

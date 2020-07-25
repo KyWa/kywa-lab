@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: gitlab
   gather_facts: false
   tasks:
 
@@ -12,6 +12,6 @@
       name: ovirt
       tasks_from: create-vm.yml
 
-  - name: deploy-cluster
+  - name: install gitlab
     import_role:
-      name: okd
+      name: gitlab

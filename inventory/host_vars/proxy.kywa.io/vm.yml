@@ -5,3 +5,4 @@ cpu_core: 1
 cpu_socket: 1
 ovirt_vm_template: cent8-template
 nic_name: enp1s0
+vm_description: "Network Proxy"

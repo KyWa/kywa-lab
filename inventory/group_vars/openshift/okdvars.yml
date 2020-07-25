@@ -1,4 +1,8 @@
 # OKD Specific
+openshift_ansible_dir: /home/kwalker/Working/openshift-ansible
+okd_prerequisite: /home/kwalker/Working/openshift-ansible/playbooks/prerequisites.yml
+okd_install: /home/kwalker/Working/openshift-ansibleplaybooks/deploy_cluster.yml
+okd_release: "release-3.11"
 deployment_type: origin
 openshift_deployment_type: origin
 openshift_disable_check: docker_storage,docker_storage_driver,memory_availability,docker_image_availability,disk_availability
