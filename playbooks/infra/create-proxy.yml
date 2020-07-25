@@ -12,9 +12,6 @@
       name: ovirt
       tasks_from: create-vm.yml
 
-  - name: gather facts
-    setup:
-
   - name: proxy-config
     import_role:
-      name: haproxy
+      name: nginx

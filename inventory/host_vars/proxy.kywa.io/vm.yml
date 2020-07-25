@@ -1,7 +1,7 @@
-vm_os: "rhel_7x64"
+vm_os: "rhel_8x64"
 min_mem: 2
 max_mem: 2
 cpu_core: 1
 cpu_socket: 1
-ovirt_vm_template: cent7-template
-nic_name: eth0
+ovirt_vm_template: cent8-template
+nic_name: enp1s0

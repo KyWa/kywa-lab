@@ -2,10 +2,10 @@
 hosted-engine
 ovirt-hosts
 
-[hosted-engine]
+[hostedengine]
 virt.kywa.io
 
-[ovirt-hosts]
+[ovirthosts]
 vhost1.kywa.io
 
 [gitlab]
