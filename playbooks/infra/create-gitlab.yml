@@ -12,6 +12,9 @@
       name: ovirt
       tasks_from: create-vm.yml
 
+  - name: gather facts after vm creation
+    setup:
+
   - name: install gitlab
     import_role:
       name: gitlab

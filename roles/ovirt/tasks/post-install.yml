@@ -28,6 +28,21 @@
       root_password: "{{ root_user_password }}"
   delegate_to: localhost
 
+- name: add storage disk
+  ovirt_disk:
+    timeout: 2400
+    name: "{{ inventory_hostname }}-data"
+    activate: true
+    format: raw
+    size: "{{ data_disk_size }}GiB"
+    auth: "{{ ovirt_auth }}"
+    storage_domain: "{{ ovirt_storage_domain }}"
+    interface: virtio_scsi
+    vm_name: "{{ inventory_hostname }}"
+  delegate_to: localhost
+  when: data_disk is defined
+  register: add_disk
+
 - name: update settings
   ovirt_vm:
     timeout: 2400
@@ -46,7 +61,15 @@
     state: running
   delegate_to: localhost
 
+- name: Run Disk Configuration
+  include_tasks: disks.yml
+  when: add_disk is changed
+
+- name: Add Firewall Rules
+  include_tasks: firewall.yml
+  when: firewall_port is defined
+
 - name: package update
   yum:
-    name: *
+    name: "*"
     state: latest

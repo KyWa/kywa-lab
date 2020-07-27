@@ -1,0 +1,7 @@
+---
+- name: enable http
+  shell: "firewall-cmd --add-service=http --permanent"
+- name: enable http
+  shell: "firewall-cmd --add-service=https --permanent"
+- name: enable http
+  shell: "firewall-cmd --reload"

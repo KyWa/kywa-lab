@@ -1,0 +1,25 @@
+---
+- name: create vg
+  lvg:
+    pvs: /dev/sdb
+    vg: data
+    state: present
+
+- name: create logical volume
+  lvol:
+    vg: data
+    lv: vol
+    size: 100%FREE
+
+- name: format new data disk
+  filesystem:
+    fstype: xfs
+    dev: /dev/mapper/data-vol
+
+- name: persist volume mount
+  mount:
+    path: "{{ data_disk_path }}"
+    src: /dev/mapper/data-vol
+    fstype: xfs
+    opts: rw,nosuid,noexec
+    state: mounted
