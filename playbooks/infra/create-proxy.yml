@@ -14,4 +14,4 @@
 
   - name: proxy-config
     import_role:
-      name: nginx
+      name: proxy

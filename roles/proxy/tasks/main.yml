@@ -10,3 +10,9 @@
     name: fail2ban
     state: present
   notify: systemd_fail2ban
+
+- name: copy fail2ban config
+  copy:
+    src: jail.local
+    dest: /etc/fail2ban/jail.local
+  notify: restart fail2ban
