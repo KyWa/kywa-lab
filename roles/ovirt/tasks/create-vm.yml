@@ -33,50 +33,55 @@
       user_name: root
       root_password: "{{ root_user_password }}"
   delegate_to: localhost
+  register: created_vm
 
-- name: stop vm
-  ovirt_vm:
-    timeout: 2400
-    auth: "{{ ovirt_auth }}"
-    name: "{{ inventory_hostname }}"
-    state: stopped
-  delegate_to: localhost
+- name: Run Post Install Tasks
+  include_tasks: post-install.yml
+  when: created_vm is changed
 
-- name: save cloud-init
-  ovirt_vm:
-    timeout: 2400
-    auth: "{{ ovirt_auth }}"
-    name: "{{ inventory_hostname }}"
-    cloud_init_persist: true
-    cloud_init:
-      dns_servers: "{{ dns_servers }}"
-      dns_search: "{{ dns_search }}"
-      nic_boot_protocol: "{{ boot_protocol }}"
-      nic_ip_address: "{{ ipv4_addr }}"
-      nic_netmask: "{{ ipv4_netmask }}"
-      nic_gateway: "{{ ipv4_def_route }}"
-      nic_name: "{{ nic_name }}"
-      nic_on_boot: true
-      host_name: "{{ inventory_hostname }}"
-      authorized_ssh_keys: "{{ ansible_ssh_key }}"
-      user_name: root
-      root_password: "{{ root_user_password }}"
-  delegate_to: localhost
-
-- name: update settings
-  ovirt_vm:
-    timeout: 2400
-    auth: "{{ ovirt_auth }}"
-    name: "{{ inventory_hostname }}"
-    boot_devices: [ 'hd' ]
-    boot_menu: false
-    usb_support: false
-  delegate_to: localhost
-
-- name: start vm
-  ovirt_vm:
-    timeout: 2400
-    auth: "{{ ovirt_auth }}"
-    name: "{{ inventory_hostname }}"
-    state: running
-  delegate_to: localhost
+  #- name: stop vm
+  #  ovirt_vm:
+  #    timeout: 2400
+  #    auth: "{{ ovirt_auth }}"
+  #    name: "{{ inventory_hostname }}"
+  #    state: stopped
+  #  delegate_to: localhost
+  #
+  #- name: save cloud-init
+  #  ovirt_vm:
+  #    timeout: 2400
+  #    auth: "{{ ovirt_auth }}"
+  #    name: "{{ inventory_hostname }}"
+  #    cloud_init_persist: true
+  #    cloud_init:
+  #      dns_servers: "{{ dns_servers }}"
+  #      dns_search: "{{ dns_search }}"
+  #      nic_boot_protocol: "{{ boot_protocol }}"
+  #      nic_ip_address: "{{ ipv4_addr }}"
+  #      nic_netmask: "{{ ipv4_netmask }}"
+  #      nic_gateway: "{{ ipv4_def_route }}"
+  #      nic_name: "{{ nic_name }}"
+  #      nic_on_boot: true
+  #      host_name: "{{ inventory_hostname }}"
+  #      authorized_ssh_keys: "{{ ansible_ssh_key }}"
+  #      user_name: root
+  #      root_password: "{{ root_user_password }}"
+  #  delegate_to: localhost
+  #
+  #- name: update settings
+  #  ovirt_vm:
+  #    timeout: 2400
+  #    auth: "{{ ovirt_auth }}"
+  #    name: "{{ inventory_hostname }}"
+  #    boot_devices: [ 'hd' ]
+  #    boot_menu: false
+  #    usb_support: false
+  #  delegate_to: localhost
+  #
+  #- name: start vm
+  #  ovirt_vm:
+  #    timeout: 2400
+  #    auth: "{{ ovirt_auth }}"
+  #    name: "{{ inventory_hostname }}"
+  #    state: running
+  #  delegate_to: localhost

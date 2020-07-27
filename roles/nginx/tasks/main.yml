@@ -3,9 +3,10 @@
   dnf:
     name: nginx
     state: present
+  notify: systemd_nginx
 
-- name: enable nginx
-  systemd:
-    name: nginx
-    enabled: yes
-    state: started
+- name: install fail2ban
+  dnf:
+    name: fail2ban
+    state: present
+  notify: systemd_fail2ban

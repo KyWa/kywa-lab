@@ -1,0 +1,13 @@
+---
+- name: systemd_nginx
+  systemd:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: systemd_fail2ban
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: yes
+
