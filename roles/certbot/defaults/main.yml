@@ -10,10 +10,12 @@ certbot_auto_renew_options: "--quiet --no-self-upgrade"
 certbot_create_if_missing: true
 certbot_create_method: standalone
 certbot_admin_email: "{{ kywa_email }}"
-certbot_certs: []
-  - domains:
-      - kywa.io
+certbot_certs:
+  - email: "{{ kywa_email }}"
+    domains:
       - git.kywa.io
+      - kywa.io
+
 certbot_create_command: >-
   {{ certbot_script }} certonly --standalone --noninteractive --agree-tos
   --email {{ cert_item.email | default(certbot_admin_email) }}

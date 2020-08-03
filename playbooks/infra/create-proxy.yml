@@ -16,6 +16,9 @@
     import_role:
       name: proxy
 
+  - name: get facts
+    setup:
+
   - name: certbot
     import_role:
       name: certbot

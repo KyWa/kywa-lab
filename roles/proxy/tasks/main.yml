@@ -5,6 +5,11 @@
     state: present
   notify: systemd_nginx
 
+- name: copy serverblock
+  copy:
+    src: git.kywa.io.conf
+    dest: /etc/nginx/conf.d/
+
 - name: install fail2ban
   dnf:
     name: fail2ban
