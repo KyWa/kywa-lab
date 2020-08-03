@@ -15,3 +15,7 @@
   - name: proxy-config
     import_role:
       name: proxy
+
+  - name: certbot
+    import_role:
+      name: certbot

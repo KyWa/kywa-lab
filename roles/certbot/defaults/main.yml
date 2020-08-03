@@ -7,16 +7,13 @@ certbot_auto_renew_minute: "30"
 certbot_auto_renew_options: "--quiet --no-self-upgrade"
 
 # Parameters used when creating new Certbot certs.
-certbot_create_if_missing: false
+certbot_create_if_missing: true
 certbot_create_method: standalone
-certbot_admin_email: email@example.com
+certbot_admin_email: "{{ kywa_email }}"
 certbot_certs: []
-# - email: janedoe@example.com
-#   domains:
-#     - example1.com
-#     - example2.com
-# - domains:
-#     - example3.com
+  - domains:
+      - kywa.io
+      - git.kywa.io
 certbot_create_command: >-
   {{ certbot_script }} certonly --standalone --noninteractive --agree-tos
   --email {{ cert_item.email | default(certbot_admin_email) }}
@@ -24,8 +21,6 @@ certbot_create_command: >-
 
 certbot_create_standalone_stop_services:
   - nginx
-  # - apache
-  # - varnish
 
 # To install from source (on older OSes or if you need a specific or newer
 # version of Certbot), set this variable to `yes` and configure other options.
