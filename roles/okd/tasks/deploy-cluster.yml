@@ -1,6 +1,12 @@
 ---
-- name: set branch for release
-  command: "cd {{ openshift_ansible_dir }} && git checkout {{ okd_release }}"
+- name: create temp inv file
+  tempfile:
+    state: file
+    suffix: ocp-tmp-install
+    path: /tmp/
+  register: tmp_log
+  run_once: true
+  delegate_to: localhost
 
 - name: run prerequisites
   command: ansible-playbook -i {{ inventory_file }} --vault-password-file {{ vault_pass_file }} {{ okd_prerequisite }} -v

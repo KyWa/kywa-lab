@@ -1,7 +1,7 @@
 # OKD Specific
 openshift_ansible_dir: /home/kwalker/Working/openshift-ansible
 okd_prerequisite: /home/kwalker/Working/openshift-ansible/playbooks/prerequisites.yml
-okd_install: /home/kwalker/Working/openshift-ansibleplaybooks/deploy_cluster.yml
+okd_install: /home/kwalker/Working/openshift-ansible/playbooks/deploy_cluster.yml
 okd_release: "release-3.11"
 deployment_type: origin
 openshift_deployment_type: origin
@@ -47,8 +47,8 @@ openshift_hosted_router_create_certificate: true
 openshift_web_console_install: true
 
 # Masters
-openshift_master_api_port: 8443
-openshift_master_console_port: 8443
+openshift_master_api_port: 443
+openshift_master_console_port: 443
 openshift_master_cluster_hostname: console.okd.kywa.io
 openshift_master_cluster_public_hostname: console.okd.kywa.io
 openshift_master_default_subdomain: okd.kywa.io
