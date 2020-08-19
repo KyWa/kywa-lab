@@ -1,0 +1,3 @@
+systemd_unit_file: "/usr/lib/systemd/system/minecraft.service"
+gitlab_directory: "/var/opt/gitlab/"
+gitlab_backup_share: "10.0.0.10:/volume1/git"

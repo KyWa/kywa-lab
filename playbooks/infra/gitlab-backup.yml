@@ -1,0 +1,37 @@
+---
+###
+#
+# Playbook will backup an existing Gitlab installation. Default var for install path is /var/opt/gitlab
+#
+###
+
+- hosts: gitlab
+  gather_facts: false
+  tasks:
+
+  - name: mount backup share
+    mount:
+      path: /backup
+      src: "{{ gitlab_backup_share}}"
+      fstype: nfs
+      state: mounted
+
+  - name: run gitlab backup
+    shell: gitlab-backup create DIRECTORY=/backup/
+
+  - name: copy config files
+    copy:
+      src: /etc/gitlab/gitlab.rb
+      dest: /backup/
+      remote_src: true
+
+  - name: copy secrets
+    copy:
+      src: /etc/gitlab/gitlab-secrets.json
+      dest: /backup/
+      remote_src: true
+
+  - name: unmount backup share
+    mount:
+      path: /backup
+      state: unmounted
