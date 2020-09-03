@@ -1,0 +1,101 @@
+---
+- name: Setup | Nvidia Driver Repo
+  copy:
+    src: cuda-rhel7.repo
+    dest: /etc/yum.repos.d/
+
+- name: Setup | Nvidia Container Repo
+  copy:
+    src: nvidia-container.repo
+    dest: /etc/yum.repos.d/
+
+- name: Setup | Create temp dir
+  command: >
+    mktemp -d /tmp/gpu-config-XXXXX
+  register: tmp_dir_cmd
+
+- name: Setup | set temp dir var
+  set_fact:
+    tmp_dir: "{{ tmp_dir_cmd.stdout }}"
+
+- name: Install | Kernel Devel
+  shell: 'yum -y install "kernel-devel-`uname -r`"'
+
+- name: Install | Nvidia drivers
+  yum:
+    name: "{{ item }}"
+    state: latest
+    disable_gpg_check: yes
+  with_items:
+  - nvidia-driver-latest-dkms
+  - nvidia-driver-latest-dkms-cuda
+  - nvidia-modprobe-latest-dkms
+
+- name: Nvidia | remove nouveau kernel module
+  command: "modprobe -r nouveau"
+
+- name: Nvidia | load nvidia kernel module
+  shell: "nvidia-modprobe && nvidia-modprobe -u"
+
+- name: Nvidia | container toolkit install
+  yum:
+    name: "{{ item }}"
+    state: latest
+    disable_gpg_check: yes
+  with_items:
+  - nvidia-container-toolkit
+
+- name: Nvidia | update runtime hook | Docker
+  copy:
+    src: oci-nvidia-hook.json
+    dest: /usr/share/containers/oci/hooks.d/
+
+- name: SELinux | install git
+  yum:
+    name: git
+    state: present
+
+- name: SELinux | Download DGX Repo
+  git:
+    repo: "https://github.com/NVIDIA/dgx-selinux.git"
+    dest: "{{ tmp_dir }}/dgx-selinux"
+
+- name: SELinux | Install tooling
+  yum:
+    name: "{{ item }}"
+    state: latest
+    disable_gpg_check: yes
+  with_items:
+  - selinux-policy
+  - selinux-policy-devel
+  - selinux-policy-base
+  - libselinux-utils
+  - policycoreutils
+  - policycoreutils-python
+
+- name: SELinux | compile SELinux module
+  shell: "make -f /usr/share/selinux/devel/Makefile"
+  args:
+    chdir: "{{ tmp_dir }}/dgx-selinux/src/nvidia-container-selinux"
+
+- name: SELinux | Install SELinux module
+  shell: "semodule -i nvidia-container.pp"
+  args:
+    chdir: "{{ tmp_dir }}/dgx-selinux/src/nvidia-container-selinux"
+
+- name: SELinux | Set contexts with new module
+  shell: "nvidia-container-cli -k list | restorecon -v -f -"
+  ignore_errors: yes
+
+- name: SELinux | Restorecon device files
+  shell: "restorecon -Rv /dev"
+
+- name: SELinux | Restorecon Kubelet
+  shell: "restorecon -Rv /var/lib/kubelet"
+
+- name: Validate | Run Test container
+  shell: "docker run --user 1000:1000 --security-opt label=type:nvidia_container_t mirrorgooglecontainers/cuda-vector-add:v0.1"
+  register: test
+
+- debug:
+    msg: "{{ test }}"

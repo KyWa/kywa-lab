@@ -1,0 +1,9 @@
+---
+- hosts: openshift
+  gather_facts: false
+  tasks:
+
+  - name: deploy-cluster
+    import_role:
+      name: okd
+      tasks_from: deploy-cluster.yml

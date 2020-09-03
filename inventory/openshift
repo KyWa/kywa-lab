@@ -22,3 +22,6 @@ okd02.kywa.io openshift_node_group_name='node-config-infra'
 okd03.kywa.io openshift_node_group_name='node-config-compute'
 
 [new_nodes]
+
+[gpu]
+okdgpu01.kywa.io
