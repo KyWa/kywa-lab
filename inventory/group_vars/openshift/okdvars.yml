@@ -2,6 +2,7 @@
 openshift_ansible_dir: /home/kwalker/Working/openshift-ansible
 okd_prerequisite: /home/kwalker/Working/openshift-ansible/playbooks/prerequisites.yml
 okd_install: /home/kwalker/Working/openshift-ansible/playbooks/deploy_cluster.yml
+okd_scaleup: /home/kwalker/Working/openshift-ansible/playbooks/openshift-node/scaleup.yml
 okd_release: "release-3.11"
 deployment_type: origin
 openshift_deployment_type: origin
@@ -27,6 +28,13 @@ openshift_node_groups:
   - name: node-config-compute
     labels:
       - 'node-role.kubernetes.io/compute=true'
+    edits: []
+
+  - name: node-config-nvidia
+    labels:
+      - 'node-role.kubernetes.io/compute=true'
+      - 'node-role.kubernetes.io/nvidia=true'
+      - 'openshift.com/gpu-accelerator=true'
     edits: []
 
 # Auth

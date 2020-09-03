@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
 
-  - name: deploy-cluster
+  - name: scaleup nodes
     import_role:
       name: okd
-      tasks_from: deploy-cluster.yml
+      tasks_from: scaleup.yml

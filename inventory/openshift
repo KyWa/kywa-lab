@@ -20,8 +20,10 @@ okd03.kywa.io
 okd01.kywa.io openshift_node_group_name='node-config-master'
 okd02.kywa.io openshift_node_group_name='node-config-infra'
 okd03.kywa.io openshift_node_group_name='node-config-compute'
+okdgpu01.kywa.io openshift_node_group_name='node-config-nvidia'
 
 [new_nodes]
+okdgpu01.kywa.io
 
 [gpu]
 okdgpu01.kywa.io
