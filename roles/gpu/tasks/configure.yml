@@ -92,6 +92,7 @@
 
 - name: SELinux | Restorecon Kubelet
   shell: "restorecon -Rv /var/lib/kubelet"
+  ignore_errors: yes
 
 - name: Validate | Run Test container
   shell: "docker run --user 1000:1000 --security-opt label=type:nvidia_container_t mirrorgooglecontainers/cuda-vector-add:v0.1"
