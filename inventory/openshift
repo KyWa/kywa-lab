@@ -3,6 +3,7 @@ etcd
 masters
 infra
 apps
+gpu
 
 [etcd]
 okd01.kywa.io
@@ -15,6 +16,7 @@ okd02.kywa.io
 
 [apps]
 okd03.kywa.io
+okdgpu01.kywa.io
 
 [nodes]
 okd01.kywa.io openshift_node_group_name='node-config-master'

@@ -1,1 +1,1 @@
-vault_pass_file: "/home/kwalker/.vault-pass"
+vault_pass_file: "~/.vault-pass"
