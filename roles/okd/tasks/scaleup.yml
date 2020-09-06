@@ -12,14 +12,14 @@
   run_once: true
   delegate_to: localhost
       
-    #- name: run prerequisites
-    #  command: ansible-playbook -i {{ inventory_file }} --vault-password-file {{ vault_pass_file }} {{ okd_prerequisite }}
-    #  args:
-    #    chdir: "{{ lookup('env', 'PWD') }}"
-    #  environment:
-    #    ANSIBLE_LOG_PATH: "{{ tmp_log.path }}"
-    #  run_once: true
-    #  delegate_to: localhost
+- name: run prerequisites
+  command: ansible-playbook -i {{ inventory_file }} --vault-password-file {{ vault_pass_file }} {{ okd_prerequisite }}
+  args:
+    chdir: "{{ lookup('env', 'PWD') }}"
+  environment:
+    ANSIBLE_LOG_PATH: "{{ tmp_log.path }}"
+  run_once: true
+  delegate_to: localhost
 
 - name: run scaleup
   command: ansible-playbook -i {{ inventory_file }} --vault-password-file {{ vault_pass_file }} {{ okd_scaleup }}

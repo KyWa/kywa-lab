@@ -3,7 +3,19 @@
   gather_facts: false
   tasks:
 
-  - name: scaleup nodes
+  - name: ovirt-auth
+    import_role:
+      name: ovirt
+
+  - name: create-vm
+    import_role:
+      name: ovirt
+      tasks_from: create-vm.yml
+
+  - name: gather facts after vm creation
+    setup:
+
+  - name: Scale Up
     import_role:
       name: okd
       tasks_from: scaleup.yml
