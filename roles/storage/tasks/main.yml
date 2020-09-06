@@ -1,0 +1,20 @@
+---
+- name: Create NFS Export
+  imclude_tasks: create_on_nfs.yml
+  #TODO Define actual when statement
+  when: newvol is set
+
+- name: Delete NFS Export
+  imclude_tasks: delete_on_nfs.yml
+  #TODO Define actual when statement
+  when: delvol is set
+
+- name: Create PV
+  imclude_tasks: create_pv.yml
+  #TODO Define actual when statement
+  when: newvol is set
+
+- name: Delete PV
+  imclude_tasks: delete_pv.yml
+  #TODO Define actual when statement
+  when: delvol is set

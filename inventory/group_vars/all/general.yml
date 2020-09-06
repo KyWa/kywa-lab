@@ -1,1 +1,2 @@
 vault_pass_file: "~/.vault-pass"
+nfs_server: "vhost1.kywa.io"
