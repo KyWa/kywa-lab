@@ -1,9 +1,0 @@
----
-- hosts: gpu
-  gather_facts: false
-  tasks:
-
-  - name: GPU Post Install
-    import_role:
-      name: gpu
-      tasks_from: configure.yml

@@ -1,9 +1,0 @@
----
-- hosts: all
-  gather_facts: false
-  tasks:
-  - name: Update Node
-    import_role:
-      name: misc
-      tasks_from: update.yml
-

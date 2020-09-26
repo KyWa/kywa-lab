@@ -1,8 +1,0 @@
----
-- hosts: proxy
-  gather_facts: false
-  tasks:
-
-  - name: proxy-config
-    import_role:
-      name: proxy

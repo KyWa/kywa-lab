@@ -7,12 +7,3 @@ virt.kywa.io
 
 [ovirthosts]
 vhost1.kywa.io
-
-[gitlab]
-git.kywa.io
-
-[ansible]
-ansible.kywa.io
-
-[proxy]
-proxy.kywa.io

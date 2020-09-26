@@ -1,6 +1,0 @@
----
-- hosts: localhost
-  gather_facts: false
-  tasks:
-  - debug:
-      msg: "{{ vault_pass_file }}"
