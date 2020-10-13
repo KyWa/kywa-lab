@@ -1,0 +1,13 @@
+---
+- hosts: openshift
+  gather_facts: false
+  tasks:
+
+  - name: ovirt-auth
+    import_role:
+      name: ovirt
+
+  - name: delete-vm
+    import_role:
+      name: ovirt
+      tasks_from: delete-vm.yml

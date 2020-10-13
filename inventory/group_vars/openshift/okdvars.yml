@@ -71,7 +71,7 @@ openshift_console_install: true
 openshift_master_api_port: 443
 openshift_master_console_port: 443
 openshift_master_cluster_hostname: console.okd.kywa.io
-openshift_console_hostname: cluster.okd.kywa.io
+openshift_console_hostname: cluster-console.okd.kywa.io
 openshift_master_cluster_public_hostname: console.okd.kywa.io
 openshift_master_default_subdomain: okd.kywa.io
 openshift_master_bootstrap_auto_approve: true
