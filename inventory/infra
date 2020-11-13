@@ -8,5 +8,5 @@ virt.kywa.io
 [ovirthosts]
 vhost1.kywa.io
 
-[security]
-security.kywa.io
+[bastion]
+bastion.kywa.io

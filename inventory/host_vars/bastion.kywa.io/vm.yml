@@ -5,4 +5,4 @@ cpu_core: 1
 cpu_socket: 2
 ovirt_vm_template: cent8-template
 nic_name: enp1s0
-vm_description: "Security Server"
+vm_description: "Bastion Server"
