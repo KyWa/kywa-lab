@@ -1,8 +1,8 @@
 # OKD Specific
-openshift_ansible_dir: /Users/kylewalker/Working/openshift-ansible
-okd_prerequisite: /Users/kylewalker/Working/openshift-ansible/playbooks/prerequisites.yml
-okd_install: /Users/kylewalker/Working/openshift-ansible/playbooks/deploy_cluster.yml
-okd_scaleup: /Users/kylewalker/Working/openshift-ansible/playbooks/openshift-node/scaleup.yml
+openshift_ansible_dir: ~/Working/openshift-ansible
+okd_prerequisite: ~/Working/openshift-ansible/playbooks/prerequisites.yml
+okd_install: ~/Working/openshift-ansible/playbooks/deploy_cluster.yml
+okd_scaleup: ~/Working/openshift-ansible/playbooks/openshift-node/scaleup.yml
 okd_release: "release-3.11"
 deployment_type: origin
 openshift_deployment_type: origin
