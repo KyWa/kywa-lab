@@ -16,3 +16,8 @@
     import_role:
       name: okd
       tasks_from: deploy-cluster.yml
+
+  - name: post install tasks
+    import_role:
+      name: okd
+      tasks_from: post-install.yml
