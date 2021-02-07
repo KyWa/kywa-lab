@@ -29,7 +29,7 @@
 
   - name: extract and copy minecraft directory
     unarchive:
-      path: "/opt"
+      dest: "/opt"
       src: "/mnt/minecraft-backup.tgz"
       remote_src: yes
 
