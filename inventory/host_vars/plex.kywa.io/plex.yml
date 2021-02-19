@@ -1,0 +1,2 @@
+systemd_unit_file: "/usr/lib/systemd/system/plexmediaserver.service"
+plex_library_dir: "/var/lib/plexmediaserver/"

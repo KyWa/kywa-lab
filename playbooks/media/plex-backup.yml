@@ -1,0 +1,23 @@
+---
+###
+#
+# Playbook will backup an Plex's library data and systemd Service. 
+#
+###
+
+- hosts: plex
+  gather_facts: false
+  tasks:
+
+  - name: backup Systemd unit
+    copy:
+      remote_src: yes
+      src: "{{ systemd_unit_file }}"
+      dest: /plex/plexmediaserver.service
+
+  - name: archive and copy plex library
+    archive:
+      path: "{{ plex_library_dir }}"
+      dest: "/plex/libbackup.tgz"
+      format: gz
+      mode: 0644
