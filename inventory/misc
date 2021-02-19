@@ -1,4 +1,7 @@
-[media]
+[media:children]
+plex
+
+[plex]
 plex.kywa.io
 
 [games:children]
