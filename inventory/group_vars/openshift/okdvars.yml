@@ -77,7 +77,7 @@ openshift_logging_master_public_url: "https://console.okd.kywa.io"
 
 # Router
 openshift_hosted_router_selector: "node-role.kubernetes.io/infra=true"
-openshift_hosted_router_certificate: {"certfile": "{{ inventory_dir }}/../files/certs/okd.kywa.io.crt", "keyfile": "{{ inventory_dir }}/../files/certs/okd.kywa.io.key", "cafile": "{{ inventory_dir }}/../files/certs/okd.kywa.io.crt"}
+openshift_hosted_router_certificate: {"certfile": "{{ inventory_dir }}/../files/certs/wildcard.crt", "keyfile": "{{ inventory_dir }}/../files/certs/wildcard.key", "cafile": "{{ inventory_dir }}/../files/certs/kywa-rootCA.pem"}
 
 # Console
 openshift_web_console_install: true
