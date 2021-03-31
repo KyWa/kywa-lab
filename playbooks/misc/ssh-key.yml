@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Update SSH Keys on all VMs
+      copy:
+        src: "{{ inventory_dir }}/../files/authorized_keys"
+        dest: "{{ ansible_ssh_user_homedir }}/.ssh/authorized_keys"
+        mode: 0600
