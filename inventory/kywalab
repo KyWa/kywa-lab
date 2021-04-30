@@ -1,0 +1,14 @@
+[lab:children]
+vms
+infra
+nas
+
+[vms]
+mc.kywa.io
+plex.kywa.io
+
+[infra]
+vhost1.kywa.io
+
+[nas]
+nas01.kywa.io

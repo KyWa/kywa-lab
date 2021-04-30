@@ -1,0 +1,20 @@
+---
+- name: Power Outage preparation
+  hosts: lab
+  gather_facts: false
+  tasks:
+  - name: Shutdown VMs
+    shell: "shutdown -h now"
+    when: inventory_hostname in group(vms)
+
+  - name: oVirt maintenance mode
+    shell: "hosted-engine --set-maintenance --mode=global && hosted-engine --vm-shutdown"
+    when: inventory_hostname == vhost1.kywa.io
+
+  - name: shutdown ovirt
+    shell: "shutdown -h now"
+    when: inventory_hostname == vhost1.kywa.io
+
+  - name: shutdown NAS
+    shell: "shutdown -h now"
+    when: inventory_hostname == nas01.kywa.io
