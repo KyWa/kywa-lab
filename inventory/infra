@@ -7,6 +7,3 @@ virt.kywa.io
 
 [ovirthosts]
 vhost1.kywa.io
-
-[bastion]
-bastion.kywa.io

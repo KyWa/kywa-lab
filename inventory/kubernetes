@@ -1,0 +1,7 @@
+[kubernetes:children]
+masters
+workers
+
+[masters]
+
+[workers]
