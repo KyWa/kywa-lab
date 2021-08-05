@@ -7,3 +7,6 @@ virt.kywa.io
 
 [ovirthosts]
 vhost1.kywa.io
+
+[services]
+services.kywa.io
