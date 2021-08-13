@@ -6,3 +6,6 @@ cpu_socket: 2
 ovirt_vm_template: cent8
 nic_name: enp1s0
 vm_description: "Services"
+data_disk: true
+data_disk_size: 64
+data_disk_path: /var/lib/containers
