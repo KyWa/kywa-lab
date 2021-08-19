@@ -1,7 +1,0 @@
-vm_os: "rhel_7x64"
-min_mem: 8
-cpu_core: 2
-cpu_socket: 2
-ovirt_vm_template: cent7
-nic_name: eth0
-vm_description: "OKD Node"

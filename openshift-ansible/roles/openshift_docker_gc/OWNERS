@@ -1,8 +1,0 @@
-# approval == this is a good idea /approve
-approvers:
-  - kwoodson
-  - mrunalp
-# review == this code is good /lgtm
-reviewers:
-  - kwoodson
-  - mrunalp

@@ -1,4 +1,0 @@
----
-- name: Set Heketi server mode as read-only
-  command: "{{ glusterfs_heketi_client }} server mode set read-only"
-  register: heketi_set_ro
