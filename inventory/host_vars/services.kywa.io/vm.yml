@@ -3,7 +3,7 @@ min_mem: 2
 max_mem: 8
 cpu_core: 1
 cpu_socket: 2
-ovirt_vm_template: f34-server
+ovirt_vm_template: f34-template
 nic_name: enp1s0
 vm_description: "Services"
 data_disk: true
