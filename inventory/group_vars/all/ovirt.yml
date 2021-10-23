@@ -1,2 +1,3 @@
 ovirt_url: "https://virt.kywa.io/ovirt-engine/api"
-ovirt_storage_domain: "vm-storage"
+ovirt_storage_domain: "vmstore-nfs"
+#ovirt_storage_domain: "vm-storage"
