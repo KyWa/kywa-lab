@@ -70,6 +70,6 @@
   when: firewall_port is defined
 
 - name: package update
-  yum:
+  dnf:
     name: "*"
     state: latest
