@@ -1,0 +1,13 @@
+[kube:children]
+kube_masters
+kube_workers
+
+[kube_masters:children]
+masters
+
+[masters]
+
+[kube_workers:children]
+workers
+
+[workers]
