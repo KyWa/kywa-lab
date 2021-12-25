@@ -1,0 +1,5 @@
+dnf module enable cri-o:$VERSION
+dnf install -y cri-o cri-utils
+
+systemctl daemon-reload
+systemctl enable crio --now
