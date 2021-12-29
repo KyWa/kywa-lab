@@ -1,6 +1,6 @@
 ---
 - name: AUTH | ovirt-auth
-  ovirt_auth:
+  ovirt.ovirt.ovirt_auth:
     username: "{{ ovirt_username }}"
     password: "{{ ovirt_password }}"
     url: "{{ ovirt_url }}"

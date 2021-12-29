@@ -1,6 +1,6 @@
 ---
 - name: stop vm
-  ovirt_vm:
+  ovirt.ovirt.ovirt_vm:
     timeout: 2400
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"
@@ -8,7 +8,7 @@
   delegate_to: localhost
 
 - name: save cloud-init
-  ovirt_vm:
+  ovirt.ovirt.ovirt_vm:
     timeout: 2400
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"
@@ -29,7 +29,7 @@
   delegate_to: localhost
 
 - name: add storage disk
-  ovirt_disk:
+  ovirt.ovirt.ovirt_disk:
     timeout: 2400
     name: "{{ inventory_hostname }}-data"
     activate: true
@@ -44,7 +44,7 @@
   register: add_disk
 
 - name: update settings
-  ovirt_vm:
+  ovirt.ovirt.ovirt_vm:
     timeout: 2400
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"
@@ -54,7 +54,7 @@
   delegate_to: localhost
 
 - name: start vm
-  ovirt_vm:
+  ovirt.ovirt.ovirt_vm:
     timeout: 2400
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"

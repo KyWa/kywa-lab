@@ -1,6 +1,6 @@
 ---
 - name: create vm
-  ovirt_vm:
+  ovirt.ovirt.ovirt_vm:
     wait: true
     timeout: 2400
     auth: "{{ ovirt_auth }}"
