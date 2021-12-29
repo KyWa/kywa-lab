@@ -27,7 +27,6 @@
       nic_netmask: "{{ ipv4_netmask }}"
       nic_gateway: "{{ ipv4_def_route }}"
       nic_name: "{{ nic_name }}"
-      nic_on_boot: true
       host_name: "{{ inventory_hostname }}"
       authorized_ssh_keys: "{{ ansible_ssh_key }}"
       user_name: root
