@@ -23,7 +23,6 @@
       nic_name: "{{ nic_name }}"
       host_name: "{{ inventory_hostname }}"
       authorized_ssh_keys: "{{ ansible_ssh_key }}"
-      user_name: root
       root_password: "{{ root_user_password }}"
   delegate_to: localhost
 
