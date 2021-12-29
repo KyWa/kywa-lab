@@ -6,6 +6,7 @@ nas
 [vms]
 mc.kywa.io
 plex.kywa.io
+services.kywa.io
 
 [infra]
 vhost1.kywa.io
