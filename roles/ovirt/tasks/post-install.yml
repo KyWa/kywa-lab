@@ -22,6 +22,7 @@
       nic_gateway: "{{ ipv4_def_route }}"
       nic_name: "{{ nic_name }}"
       host_name: "{{ inventory_hostname }}"
+      regenerate_ssh_keys: true
       authorized_ssh_keys: "{{ ansible_ssh_key }}"
       root_password: "{{ root_user_password }}"
       user_name: root
