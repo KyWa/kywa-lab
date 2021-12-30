@@ -14,3 +14,6 @@
     import_role:
       name: ovirt
       tasks_from: delete-vm.yml
+
+  collections:
+  - ovirt.ovirt

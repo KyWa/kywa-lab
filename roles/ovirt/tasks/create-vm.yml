@@ -1,6 +1,6 @@
 ---
 - name: create vm
-  ovirt.ovirt.ovirt_vm:
+  ovirt_vm:
     wait: true
     timeout: 2400
     auth: "{{ ovirt_auth }}"
@@ -29,15 +29,9 @@
       nic_name: "{{ nic_name }}"
       host_name: "{{ inventory_hostname }}"
       regenerate_ssh_keys: true
-#      authorized_ssh_keys: "{{ ansible_ssh_key }}"
-#      root_password: "{{ root_user_password }}"
-#      user_name: "root"
-      custom_script: |
-        users:
-          - name: root
-            ssh_authorized_keys: "{{ ansible_ssh_key }}"
-#            lock-passwd: false
-#            passwd: $1$SaltSalt$C5NrgO6l7kkEqjlEMzEkW0
+      authorized_ssh_keys: "{{ ansible_ssh_key }}"
+      root_password: "{{ root_user_password }}"
+      user_name: "root"
   delegate_to: localhost
   register: created_vm
 

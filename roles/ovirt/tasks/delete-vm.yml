@@ -1,6 +1,6 @@
 ---
 - name: delete vm
-  ovirt.ovirt.ovirt_vm:
+  ovirt_vm:
     wait: true
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"
