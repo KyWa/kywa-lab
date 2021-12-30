@@ -12,7 +12,7 @@
   - name: mount backup share
     mount:
       path: /mnt
-      src: "{{ minecraft_backup_share}}"
+      src: "{{ minecraft_backup_share }}"
       fstype: nfs
       state: mounted
 

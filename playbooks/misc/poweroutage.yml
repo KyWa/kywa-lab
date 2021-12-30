@@ -11,6 +11,10 @@
     shell: "hosted-engine --set-maintenance --mode=global && hosted-engine --vm-shutdown"
     when: inventory_hostname == vhost1.kywa.io
 
+  - name: Pause for hosted-engine
+    pause:
+      seconds: 60
+
   - name: shutdown ovirt
     shell: "shutdown -h now"
     when: inventory_hostname == vhost1.kywa.io
