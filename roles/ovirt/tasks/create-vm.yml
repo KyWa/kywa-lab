@@ -5,7 +5,6 @@
     timeout: 2400
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"
-    comment: ""
     description: "{{ vm_description | default('') }}"
     template: "{{ ovirt_vm_template }}"
     operating_system: "{{ vm_os }}"
@@ -14,7 +13,6 @@
     cpu_sockets: "{{ cpu_socket }}"
     memory: "{{ max_mem }}GiB"
     memory_guaranteed: "{{ min_mem }}GiB"
-    high_availability: false
     state: running
     storage_domain: "{{ ovirt_storage_domain }}"
     clone: true
@@ -31,7 +29,7 @@
       regenerate_ssh_keys: true
       authorized_ssh_keys: "{{ ansible_ssh_key }}"
       root_password: "{{ root_user_password }}"
-      user_name: "root"
+      user_name: root
   delegate_to: localhost
   register: created_vm
 
