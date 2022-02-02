@@ -10,6 +10,11 @@ services.kywa.io
 
 [infra]
 vhost1.kywa.io
+vhost01.kywa.io
 
 [nas]
 nas01.kywa.io
+
+[hosted_engine]
+virt.kywa.io
+ovirt.kywa.io
