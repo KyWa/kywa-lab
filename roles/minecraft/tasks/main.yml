@@ -1,0 +1,20 @@
+---
+- name: Install Minecraft
+  include_tasks: server-prep.yml
+  when: minecraft_install == true and not is_container
+
+- name: Uninstall Minecraft
+  include_tasks: uninstall.yml
+  when: minecraft_install == false
+
+- name: Change Minecraft Configuration
+  include_tasks: config-change.yml
+  when: minecraft_config_change == true
+
+- name: Backup Minecraft
+  include_tasks: backup.yml
+  when: minecraft_backup == true
+
+- name: Restore Minecraft
+  include_tasks: restore.yml
+  when: minecraft_restore == true

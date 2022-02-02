@@ -3,6 +3,6 @@ min_mem: 2
 max_mem: 4
 cpu_core: 1
 cpu_socket: 2
-ovirt_vm_template: cent8-stream
+ovirt_vm_template: cent8_stream_template
 nic_name: enp1s0
 vm_description: "Minecraft Server"
