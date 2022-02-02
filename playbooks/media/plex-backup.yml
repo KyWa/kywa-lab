@@ -15,9 +15,20 @@
       src: "{{ systemd_unit_file }}"
       dest: /plex/plexmediaserver.service
 
+  - name: move existing backup
+    copy:
+      remote_src: yes
+      src: "/plex/libbackup.tgz"
+      dest: "/plex/libbackup.tgz-old"
+
   - name: archive and copy plex library
     archive:
       path: "{{ plex_library_dir }}"
       dest: "/plex/libbackup.tgz"
       format: gz
       mode: 0644
+
+  - name: remove old backup
+    file:
+      path: "/plex/libbackup.tgz-old"
+      state: absent
