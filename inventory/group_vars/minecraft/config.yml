@@ -2,13 +2,9 @@ ansible_ssh_user: root
 minecraft_java_version: "17"
 minecraft_backup: false
 minecraft_restore: false
+minecraft_config_change: false
 minecraft_user: "minecraft"
 minecraft_group: "minecraft"
 minecraft_directory: "/opt/minecraft"
-minecraft_container_registry: "docker.io"
-minecraft_container_image: "mineops/minecraft-server"
-minecraft_container_digest: "sha256:a1c9949b33321f1a89f149d2d8dffd09d956ad938c97b4da1e9cd641d0b693f8"
-is_container: true
-container_path: "containers"
 minecraft_version: "latest"
 minecraft_java_opts: "-Xms512m -Xmx2048m"

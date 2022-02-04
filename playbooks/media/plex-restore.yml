@@ -1,22 +1,41 @@
 ---
 ###
-#
-# Playbook will backup an Plex's library data and systemd Service. 
-#
+# Playbook will restore a Plex Media Server
 ###
 
 - hosts: plex
   gather_facts: false
   tasks:
+  - name: ovirt-auth
+    import_role:
+      name: ovirt
 
-  - name: backup Systemd unit
+  - name: create-vm
+    import_role:
+      name: ovirt
+      tasks_from: create-vm.yml
+
+  - name: Install Plex RPM
+    yum:
+      name: /plex/pms-latest.rpm
+      state: present
+
+  - name: Restore Systemd unit
     copy:
       remote_src: yes
       src: /plex/plexmediaserver.service
       dest: "{{ systemd_unit_file }}"
 
-  - name: extract plex library metadata
+  - name: Restore Plex Library data
     unarchive:
       remote_src: yes
-      dest: "{{ plex_library_dir }}"
       src: "/plex/libbackup.tgz"
+      dest: "{{ plex_library_dir }}"
+
+  - name: Restart Plex Service
+    systemd:
+      name: plexmediaserver
+      state: restarted
+
+  collections:
+  - ovirt.ovirt

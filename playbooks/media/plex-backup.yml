@@ -15,6 +15,21 @@
       src: "{{ systemd_unit_file }}"
       dest: /plex/plexmediaserver.service
 
+  - name: Get Plex RPMs
+    find:
+      paths: "/root"
+    register: found_files
+  
+  - name: Get latest Plex RPM
+    set_fact:
+      latest_file: "{{ found_files.files | sort(attribute='mtime',reverse=true) | first }}"
+
+  - name: backup latest rpm
+    copy:
+      remote_src: yes
+      src: "{{ latest_file.path }}"
+      dest: /plex/pms-latest.rpm
+
   - name: move old backup
     shell: mv /plex/libbackup.tgz /plex/libbackup.tgz-old
 

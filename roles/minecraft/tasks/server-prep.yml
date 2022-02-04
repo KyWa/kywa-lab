@@ -24,7 +24,7 @@
   user:
     name: "{{ minecraft_user }}"
     group: "{{ minecraft_group }}"
-    comment: "{{ customer_id }} Minecraft Server Manager"
+    comment: "Minecraft Server Manager"
     state: present
 
 - name: Check if a server.jar exists already

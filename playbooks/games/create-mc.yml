@@ -1,0 +1,25 @@
+---
+
+# ansible-playbook -i inventory/filename playbook/ovirt/create-vm.yml --limit="hostname"
+
+- hosts: all
+  gather_facts: false
+  vars:
+    minecraft_install: true
+  tasks:
+
+  - name: ovirt-auth
+    import_role:
+      name: ovirt
+
+  - name: create-vm
+    import_role:
+      name: ovirt
+      tasks_from: create-vm.yml
+
+  - name: Install Minecraft
+    import_role:
+      name: minecraft
+
+  collections:
+  - ovirt.ovirt
