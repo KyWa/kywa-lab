@@ -17,6 +17,7 @@
     storage_domain: "{{ ovirt_storage_domain }}"
     clone: true
     disk_format: raw
+    cloud_init_persist: true
     cloud_init:
       dns_servers: "{{ dns_servers }}"
       dns_search: "{{ dns_search }}"
@@ -32,6 +33,9 @@
       user_name: root
   delegate_to: localhost
   register: created_vm
+  retries: 5
+  delay: 15
+  until: created_vm is not failed
 
 - name: Run Post Install Tasks
   include_tasks: post-install.yml
