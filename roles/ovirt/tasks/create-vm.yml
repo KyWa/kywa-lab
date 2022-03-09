@@ -13,7 +13,7 @@
     cpu_sockets: "{{ cpu_socket }}"
     memory: "{{ max_mem }}GiB"
     memory_guaranteed: "{{ min_mem }}GiB"
-    state: running
+    state: present
     storage_domain: "{{ ovirt_storage_domain }}"
     clone: true
     disk_format: raw
