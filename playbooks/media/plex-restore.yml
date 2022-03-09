@@ -15,10 +15,27 @@
       name: ovirt
       tasks_from: create-vm.yml
 
+  - name:
+    file:
+      state: directory
+      path: /plex
+      mode: 0755
+
+  - name: 
+    dnf:
+      name: nfs-utils
+      state: latest
+
+  - name:
+    mount:
+      path: /plex
+      src: "nas01.kywa.io:/volume1/plex"
+      fstype: nfs
+      state: mounted
+
   - name: Install Plex RPM
-    yum:
-      name: /plex/pms-latest.rpm
-      state: present
+    shell: rpm -i /plex/pms-latest.rpm
+    ignore_errors: true
 
   - name: Restore Systemd unit
     copy:
@@ -31,6 +48,12 @@
       remote_src: yes
       src: "/plex/libbackup.tgz"
       dest: "{{ plex_library_dir }}"
+
+  - name: Open Plex Server Port on Firewall
+    firewalld:
+      port:  "32400/tcp"
+      permanent: yes
+      state: enabled
 
   - name: Restart Plex Service
     systemd:
