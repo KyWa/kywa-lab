@@ -15,13 +15,19 @@
       name: ovirt
       tasks_from: create-vm.yml
 
-  - name:
+  - name: Create Plex Dir
     file:
       state: directory
       path: /plex
       mode: 0755
 
-  - name: 
+  - name: Create Library Dir
+    file:
+      state: directory
+      path: /var/lib/plexmediaserver
+      mode: 0755
+
+  - name: Install NFS Utils
     dnf:
       name: nfs-utils
       state: latest
@@ -33,15 +39,15 @@
       fstype: nfs
       state: mounted
 
+  - name: Open Plex Server Port on Firewall
+    firewalld:
+      port:  "32400/tcp"
+      permanent: yes
+      state: enabled
+
   - name: Install Plex RPM
     shell: rpm -i /plex/pms-latest.rpm
     ignore_errors: true
-
-  - name: Restore Systemd unit
-    copy:
-      remote_src: yes
-      src: /plex/plexmediaserver.service
-      dest: "{{ systemd_unit_file }}"
 
   - name: Restore Plex Library data
     unarchive:
@@ -49,11 +55,20 @@
       src: "/plex/libbackup.tgz"
       dest: "{{ plex_library_dir }}"
 
-  - name: Open Plex Server Port on Firewall
-    firewalld:
-      port:  "32400/tcp"
-      permanent: yes
-      state: enabled
+  - name: Force redownload of Codecs
+    copy:
+      remote_src: true
+      src: "/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Codecs"
+      dest: /tmp/Codecs
+
+  - name: Symlink Codecs
+    file:
+      state: link
+      src: /tmp/Codecs
+      dest: "/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Codecs" 
+
+  - name: SELinux Restorecon
+    shell: restorecon -R /var/lib/plexmediaserver
 
   - name: Restart Plex Service
     systemd:
