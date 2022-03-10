@@ -6,6 +6,6 @@
 
   - name: copy-backup-script
     copy:
-      src: {{ inventory_dir }}../files/ovirt-backup.sh
+      src: "{{ inventory_dir }}/../files/ovirt-backup.sh"
       dest: /etc/cron.daily/ovirt-backup.sh
       mode: 0755
