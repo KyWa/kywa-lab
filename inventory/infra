@@ -3,12 +3,11 @@ hostedengine
 ovirthosts
 
 [hostedengine]
-virt.kywa.io
 ovirt.kywa.io
 
 [ovirthosts]
-vhost1.kywa.io
 vhost01.kywa.io
+vhost02.kywa.io
 
 [services]
 services.kywa.io

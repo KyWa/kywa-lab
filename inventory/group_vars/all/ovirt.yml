@@ -1,8 +1,4 @@
 ovirt_engine: ovirt
-#ovirt_engine: virt
 ovirt_url: "https://{{ ovirt_engine }}.kywa.io/ovirt-engine/api"
-#ovirt_storage_domain: "vmstore-nfs" # This is the 1TB share from the Synology
-#ovirt_storage_domain: "vm-storage" # This is the 1TB RAID share on vhost1
-#ovirt_storage_domain: "hosted_storage" # This is the 500G share on vhost1
 ovirt_storage_domain: "hosted_storage_10g"  # This is the 1TB share from the Synology over 10GbE
 ovirt_vm_template: cent8_stream_template
