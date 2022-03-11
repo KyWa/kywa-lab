@@ -1,0 +1,21 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ensure SSH Keys in place
+      copy:
+        src: "{{ inventory_dir }}/../files/authorized_keys"
+        dest: /root/.ssh/authorized_keys
+        mode: 0600
+
+    - name: Ensure .bashrc is correct
+      copy:
+        src: "{{ inventory_dir }}/../files/bashrc"
+        dest: /root/.bashrc
+        mode: 0755
+
+    - name: Update all packages
+      package:
+        name: "*"
+        state: latest
+

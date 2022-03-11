@@ -1,9 +1,8 @@
 10.0.0.1 router.kywa.io
-10.0.0.5 virt.kywa.io
-10.0.0.6 vhost1.kywa.io
 10.0.0.8 vhost01.kywa.io
+10.0.0.7 vhost02.kywa.io
 10.0.0.9 ovirt.kywa.io
-10.0.0.10 nas.kywa.io
+10.0.0.10 nas01.kywa.io
 10.0.0.11 ng24sw.kywa.io
 10.0.0.19 brother.kywa.io
 10.0.0.20 mc.kywa.io
