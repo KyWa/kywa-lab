@@ -8,3 +8,5 @@
 10.0.0.20 mc.kywa.io
 10.0.0.21 plex.kywa.io
 10.0.0.22 services.kywa.io
+10.0.0.30 api.okd.kywa.io
+10.0.0.31 *.apps.okd.kywa.io
