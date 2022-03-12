@@ -1,0 +1,67 @@
+apiVersion: v1
+baseDomain: kywa.io
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform:
+    ovirt:
+      cpu:
+        cores: 1
+        sockets: 4
+      memoryMB: 16384
+      osDisk:
+        sizeGB: 120
+      affinityGroupsNames:
+      - compute
+  replicas: 1
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform:
+    ovirt:
+      cpu:
+        cores: 1
+        sockets: 4
+      memoryMB: 16384
+      osDisk:
+        sizeGB: 64
+      affinityGroupsNames:
+      - controlplane
+  replicas: 3
+metadata:
+  creationTimestamp: null
+  name: okd
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16
+  networkType: OVNKubernetes
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  ovirt:
+    affinityGroups:
+    - description: AffinityGroup for spreading each compute machine to a different
+        host
+      enforcing: false
+      name: compute
+      priority: 3
+    - description: AffinityGroup for spreading each control plane machine to a different
+        host
+      enforcing: false
+      name: controlplane
+      priority: 5
+    api_vip: 10.0.0.30
+    ingress_vip: 10.0.0.31
+    ovirt_cluster_id: fc5cde98-844e-11ec-91b7-00163e6ed550
+    ovirt_network_name: ovirtmgmt
+    ovirt_storage_domain_id: 233f8ff2-f94e-44e5-b187-185eae615e7d
+    vnicProfileID: 0000000a-000a-000a-000a-000000000398
+publish: External
+pullSecret: '{"auths":{"fake":{"auth":"aWQ6cGFzcwo="}}}'
+sshKey: |
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDIkuy8qY3sABJOJWhs9ypBVxE+US2yu6nb+rqHksWgWxECLR0J+x67gmFZm+V1AFe4fJHYmun+cqzTtGYwdOHpoV719bkUS0GVZ+UoSNIujqLUsrssDqIbio/O5QUIv+0GVQpRJHDhPZ4KgxD5e8Z81p4aTpCX6erWmdV83u+Dh5fQhLuRYRbGl38Ft6upu4tn+mW6W05iCoNs2DJPJ4VRADoZ12cgjCuCNK2Vz/demV/+LS94dC44EpzSQ7aFyb5IO13ddGpOMTDn9LMIF9GSnDghe+07RYpf6rGDDGC60Rq8+bIKujV0f+sNsKmS2YTCiwzysXvQAkJt3L3vC0Zxa+KIBsHWwGmsLk1LmDZ227PFlbk+iCTjptCCPHv8xptNrS5LZROAmuHEa8bK2SDax1yfhM70SiRcfzeK45ZejGBFWOHMt/FxlXbE5ua3xw3Mj8qL1Zisk6g1ZvGXVWszvHJqK9bWZhmPRoIbkSUMRSd60IAs4PW0A8tPzQCZZBs= kylewalker@macs-Mac-mini.kywa.io

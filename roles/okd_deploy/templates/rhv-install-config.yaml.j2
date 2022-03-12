@@ -1,0 +1,66 @@
+apiVersion: v1
+baseDomain: "{{ openshift_cluster_domain }}"
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform:
+    ovirt:
+      cpu:
+        cores: {{ worker_cores }}
+        sockets: {{ worker_sockets }}
+      memoryMB: {{ worker_memory_mb }}
+      osDisk:
+        sizeGB: {{ worker_disk_gb }}
+      affinityGroupsNames:
+      - compute
+  replicas: {{ worker_replicas }}
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform:
+    ovirt:
+      cpu:
+        cores: {{ master_cores }}
+        sockets: {{ master_sockets }}
+      memoryMB: {{ master_memory_mb }}
+      osDisk:
+        sizeGB: {{ master_disk_gb }}
+      affinityGroupsNames:
+      - controlplane
+  replicas: {{ master_replicas }}
+metadata:
+  name: "{{ openshift_cluster_name }}"
+networking:
+  clusterNetwork:
+  - cidr: "{{ cluster_network_cidr }}"
+    hostPrefix: {{ cluster_network_host_prefix }}
+  machineNetwork:
+  - cidr: "{{ machine_network_cidr }}"
+  networkType: OpenShiftSDN
+  serviceNetwork:
+  - "{{ service_network_cidr }}"
+platform:
+  ovirt:
+    affinityGroups:
+    - description: AffinityGroup for spreading each compute machine to a different
+        host
+      enforcing: false
+      name: compute
+      priority: 3
+    - description: AffinityGroup for spreading each control plane machine to a different
+        host
+      enforcing: false
+      name: controlplane
+      priority: 5
+    api_vip: "{{ openshift_api_vip }}"
+    ingress_vip: "{{ openshift_ingress_vip }}"
+    ovirt_cluster_id: "{{ ovirt_cluster_id }}"
+    ovirt_network_name: "{{ ovirt_network_name }}"
+    ovirt_storage_domain_id: "{{ ovirt_storage_domain_id }}"
+    vnicProfileID: "{{ ovirt_vnic_profile_id }}"
+publish: External
+pullSecret: '{{ openshift_pull_secret }}'
+sshKey: '{{ openshift_ssh_key }}'
+imageContentSources: {}

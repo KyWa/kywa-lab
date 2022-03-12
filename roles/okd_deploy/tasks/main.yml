@@ -1,0 +1,30 @@
+---
+
+- name: Initialize Environment
+  include_tasks: init.yml
+
+- name: Obtain Software
+  include_tasks: software.yml
+
+- name: Prepare for OKD Deployment
+  include_tasks: okd_prep.yml
+
+- name: Prepare for oVirt Deployment
+  include_tasks: ovirt.yml
+
+- name: OKD Deployment
+  block:
+
+  - name: Deploy OKD Environment
+    include_tasks: deploy.yml
+
+  - name: Obtain Kube Cluster information
+    include_tasks: kube-init.yml
+
+  when: environment_action == "deploy"
+
+- name: OKD Destroy
+  block:
+    - name: Destroy OKD
+      include_tasks: destroy.yml
+  when: environment_action == "destroy"
