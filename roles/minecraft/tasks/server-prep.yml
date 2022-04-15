@@ -94,12 +94,14 @@
         port:  "{{ minecraft_server_port }}/tcp"
         permanent: yes
         state: enabled
+        immediate: yes
     
     - name: Open Minecraft Query Port on Firewall
       firewalld:
         port: "{{ minecraft_query_port }}/udp"
         permanent: yes
         state: enabled
+        immediate: yes
 
 - name: Starting up Minecraft
   include_tasks: start-server.yml
