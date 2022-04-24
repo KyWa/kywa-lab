@@ -39,6 +39,7 @@
     storage_domain: "{{ ovirt_storage_domain }}"
     interface: virtio_scsi
     vm_name: "{{ inventory_hostname }}"
+    timeout: 600
   delegate_to: localhost
   when: data_disk is defined
   register: add_disk
