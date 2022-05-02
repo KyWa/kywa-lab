@@ -28,18 +28,32 @@
       user_name: root
   delegate_to: localhost
 
+    #- name: add storage disk
+    #  ovirt_disk:
+    #    timeout: 2400
+    #    name: "{{ inventory_hostname }}-data"
+    #    activate: true
+    #    format: raw
+    #    size: "{{ data_disk_size }}GiB"
+    #    auth: "{{ ovirt_auth }}"
+    #    storage_domain: "{{ ovirt_storage_domain }}"
+    #    interface: virtio_scsi
+    #    vm_name: "{{ inventory_hostname }}"
+    #    pass_discard: no
+    #  delegate_to: localhost
+    #  when: data_disk is defined
+    #  register: add_disk
+
 - name: add storage disk
   ovirt_disk:
-    timeout: 2400
-    name: "{{ inventory_hostname }}-data"
-    activate: true
-    format: raw
-    size: "{{ data_disk_size }}GiB"
     auth: "{{ ovirt_auth }}"
-    storage_domain: "{{ ovirt_storage_domain }}"
-    interface: virtio_scsi
+    name: "{{ inventory_hostname }}-data"
     vm_name: "{{ inventory_hostname }}"
-    pass_discard: no
+    size: "{{ data_disk_size }}GiB"
+    format: raw
+    interface: virtio_scsi
+    storage_domain: "{{ ovirt_storage_domain }}"
+    description: "{{ inventory_hostname }} data disk"
   delegate_to: localhost
   when: data_disk is defined
   register: add_disk
