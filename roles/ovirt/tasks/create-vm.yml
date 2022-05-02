@@ -1,4 +1,11 @@
 ---
+- name: check for vm
+  ovirt_vm_info:
+    auth: "{{ ovirt_auth }}"
+    pattern: "name={{ inventory_hostname }}"
+  register: vm_status
+  delegate_to: localhost
+
 - name: create vm
   ovirt_vm:
     wait: true
@@ -36,6 +43,7 @@
   retries: 5
   delay: 15
   until: created_vm is not failed
+  when: vm_status.ovirt_vms == [] 
 
 - name: Run Post Install Tasks
   include_tasks: post-install.yml
