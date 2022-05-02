@@ -47,7 +47,7 @@
   ovirt_disk:
     timeout: 2400
     name: "{{ inventory_hostname }}-data"
-    activate: true
+    activate: yes
     auth: "{{ ovirt_auth }}"
     vm_name: "{{ inventory_hostname }}"
     state: attached
