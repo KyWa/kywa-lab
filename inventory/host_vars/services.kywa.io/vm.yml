@@ -5,6 +5,6 @@ cpu_core: 1
 cpu_socket: 2
 nic_name: enp1s0
 vm_description: "Services"
-  #data_disk: true
-  #data_disk_size: 64
-  #data_disk_path: /var/lib/containers
+data_disk: true
+data_disk_size: 64
+data_disk_path: /var/lib/containers
