@@ -32,12 +32,10 @@
   ovirt_disk:
     timeout: 2400
     name: "{{ inventory_hostname }}-data"
-    activate: no
     format: raw
     size: "{{ data_disk_size }}GiB"
     auth: "{{ ovirt_auth }}"
     storage_domain: "{{ ovirt_storage_domain }}"
-    interface: virtio_scsi
     state: present
   delegate_to: localhost
   when: data_disk is defined
@@ -51,6 +49,7 @@
     auth: "{{ ovirt_auth }}"
     vm_name: "{{ inventory_hostname }}"
     state: attached
+    interface: virtio_scsi
   delegate_to: localhost
   when: data_disk is defined
   register: add_disk
