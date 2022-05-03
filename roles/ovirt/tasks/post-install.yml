@@ -70,6 +70,10 @@
     state: running
   delegate_to: localhost
 
+- name: Give VM a moment to start
+  pause:
+    seconds: 20
+
 - name: Run Disk Configuration
   include_tasks: disks.yml
   when: add_disk is changed
