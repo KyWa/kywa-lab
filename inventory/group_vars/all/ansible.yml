@@ -7,7 +7,7 @@ ansible_ssh_key: |
 ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 ansible_ssh_user: root
 ansible_ssh_user_homedir: /root
-#ansible_distribution: centos
-#ansible_distribution_version: 8
-#ansible_distribution_major_version: 8
-#ansible_os_family: centos
+ansible_distribution: centos
+ansible_distribution_version: 8
+ansible_distribution_major_version: 8
+ansible_os_family: centos

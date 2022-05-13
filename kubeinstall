@@ -41,3 +41,39 @@ EOF
 dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 systemctl enable --now kubelet
+
+# k8s config
+curl -o yq -fsSL https://github.com/mikefarah/yq/releases/download/v4.25.1/yq_linux_amd64 && chmod +x yq && mv yq /usr/local/bin/
+cat <<EOF | tee k8s-script.sh
+#!/bin/bash
+
+set -euo pipefail
+
+KUBEADM_CONFIG="${1-/tmp/kubeadm.yaml}"
+echo "Printing to $KUBEADM_CONFIG"
+
+if [ -d "$KUBEADM_CONFIG" ]; then
+    echo "$KUBEADM_CONFIG is a directory!"
+    exit 1
+fi
+
+if [ ! -d $(dirname "$KUBEADM_CONFIG") ]; then
+    echo "please create directory $(dirname $KUBEADM_CONFIG)"
+    exit 1
+fi
+
+if [ ! $(which yq) ]; then
+    echo "please install yq"
+    exit 1
+fi
+
+if [ ! $(which kubeadm) ]; then
+    echo "please install kubeadm"
+    exit 1
+fi
+
+kubeadm config print init-defaults --component-configs=KubeletConfiguration > "$KUBEADM_CONFIG"
+yq -i eval 'select(.nodeRegistration.criSocket) |= .nodeRegistration.criSocket = "unix:///var/run/crio/crio.sock"' "$KUBEADM_CONFIG"
+EOF
+
+export CIDR=10.85.0.0/16
