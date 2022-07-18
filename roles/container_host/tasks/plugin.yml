@@ -1,0 +1,32 @@
+---
+- name: dnsname plugin
+  block:
+    - name: Create temp directory
+      tempfile:
+        state: directory
+      register: tempdir
+
+    - name: Get code
+      git:
+        repo: https://github.com/containers/dnsname
+        dest: "{{ tempdir.path }}"
+
+    - name: check tempdir
+      shell: ls {{ tempdir.path }}
+      register: path
+
+    - name: spit out above
+      debug:
+        msg: "{{ path }}"
+
+    - name: compile
+      make:
+        chdir: "{{ tempdir.path }}"
+        target: all
+
+    - name: install
+      make:
+        chdir: "{{ tempdir.path }}"
+        target: install
+        params:
+          PREFIX: "/usr"

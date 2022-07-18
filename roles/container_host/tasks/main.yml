@@ -1,0 +1,6 @@
+---
+- name: Install pre-requisites
+  include_tasks: pre_req.yml
+
+- name: Container Plugin setup
+  include_tasks: plugin.yml

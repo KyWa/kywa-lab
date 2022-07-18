@@ -1,0 +1,17 @@
+---
+- name: Install required tools
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - git
+    - nfs-utils
+    - go
+    - make
+    - containernetworking-plugins
+    - dnsmasq
+
+- name: Group install for devtools
+  dnf:
+    name: '@Development Tools'
+    state: present
