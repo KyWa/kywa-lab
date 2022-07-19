@@ -9,6 +9,9 @@ podman volume create --opt type=nfs --opt o=async --opt device=10.0.0.10:/volume
 
 ### CREATE CONTAINERS ###
 
+# ddclient
+podman run -d --name ddclient -e PUID=1000 -e PGID=1000 -e TZ=Americas/Chicago -v /data/nginxproxymanager/:/config:z --restart unless-stopped docker.io/linuxserver/ddclient
+
 # Portainer
 podman run -d -p 8000 -p 9443 --privileged --name portainer --restart unless-stopped -v /var/run/podman/podman.sock:/var/run/docker.sock portainer/portainer-ce
 
