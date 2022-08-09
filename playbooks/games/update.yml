@@ -1,0 +1,14 @@
+---
+###
+#
+# Playbook will backup an existing minecraft installation. Default var for install path is /opt/minecraft
+#
+###
+
+- hosts: minecraft
+  gather_facts: false
+  tasks:
+    - name: Upgrade Minecraft
+      import_role:
+        name: minecraft
+        tasks_from: software.yml
