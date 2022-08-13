@@ -43,7 +43,7 @@
   retries: 5
   delay: 15
   until: created_vm is not failed
-  when: vm_status.ovirt_vms == [] 
+  when: vm_status.ovirt_vms == []
 
 - name: Run Post Install Tasks
   include_tasks: post-install.yml

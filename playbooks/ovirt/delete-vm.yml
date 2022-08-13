@@ -1,6 +1,6 @@
 ---
 
-# ansible-playbook -i inventory/filename playbook/ovirt/create-vm.yml --limit="hostname"
+# ansible-playbook -i inv/hosts playbook/ovirt/create-vm.yml --limit="hostname"
 
 - hosts: all
   gather_facts: false
@@ -16,4 +16,4 @@
       tasks_from: delete-vm.yml
 
   collections:
-  - ovirt.ovirt
+    - ovirt.ovirt

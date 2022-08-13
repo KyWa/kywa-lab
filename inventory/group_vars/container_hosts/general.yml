@@ -1,0 +1,4 @@
+rpm_packages:
+  - nfs-utils
+  - dnsmasq
+  - skopeo

@@ -1,8 +1,8 @@
 # Workers
-worker_cores: 4
-worker_sockets: 4
+worker_cores: 2
+worker_sockets: 2
 worker_disk_gb: 120
-worker_memory_mb: 16384
+worker_memory_mb: 8192
 
 # Masters
 master_cores: 4

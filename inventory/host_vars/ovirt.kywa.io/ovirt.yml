@@ -1,3 +1,0 @@
-ovirt_engine: "{{ inventory_hostname }}"
-ovirt_url: https://{{ ovirt_engine }}/ovirt-engine/api
-ovirt_datacenter: Default

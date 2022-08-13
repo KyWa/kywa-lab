@@ -57,7 +57,7 @@
     timeout: 2400
     auth: "{{ ovirt_auth }}"
     name: "{{ inventory_hostname }}"
-    boot_devices: [ 'hd' ]
+    boot_devices: ['hd']
     boot_menu: false
     usb_support: false
   delegate_to: localhost

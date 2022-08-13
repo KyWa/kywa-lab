@@ -1,5 +1,5 @@
 ---
-openshift_version: "stable-4.6"
+openshift_version: "stable-4.10"
 
 master_replicas: 3
 worker_replicas: 3

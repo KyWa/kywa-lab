@@ -1,20 +1,40 @@
-[lab:children]
+[all_lab:children]
+ovirt
 vms
-infra
 nas
 
-[vms]
-mc.kywa.io
-plex.kywa.io
-services.kywa.io
+[ovirt:children]
+hostedengine
+ovirthosts
 
-[infra]
-vhost1.kywa.io
+[ovirthosts]
 vhost01.kywa.io
+vhost02.kywa.io
+
+[hostedengine]
+ovirt.kywa.io
+
+[vms:children]
+container_hosts
+games
+media
+services
+
+[container_hosts]
+chost01.kywa.io
+chost02.kywa.io
+chost03.kywa.io
+
+[games]
+mc.kywa.io
+
+[media]
+plex.kywa.io
+
+[services]
+services.kywa.io
+bastion.kywa.io
 
 [nas]
 nas01.kywa.io
 
-[hosted_engine]
-virt.kywa.io
-ovirt.kywa.io

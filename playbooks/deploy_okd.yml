@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  tasks:
-    - name: Execute Deploy OKD Role
-      include_role:
-        name: okd_deploy
+- hosts: all
+  connection: local
+  roles:
+  - okd_deploy

@@ -1,0 +1,6 @@
+---
+# .ansible-lint
+exclude_paths:
+  - .github/
+
+use_default_rules: true
