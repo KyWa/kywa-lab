@@ -13,6 +13,9 @@ vhost02.kywa.io
 services.kywa.io
 bastion.kywa.io
 
+[controlbox]
+cbtest.kywa.io
+
 [container_hosts]
 chost01.kywa.io
 chost02.kywa.io

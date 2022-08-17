@@ -1,0 +1,5 @@
+---
+- hosts: controlbox
+  tasks:
+    - include_role:
+        name: container_host
