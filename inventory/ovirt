@@ -8,3 +8,6 @@ ovirt.kywa.io
 [ovirthosts]
 vhost01.kywa.io
 vhost02.kywa.io
+
+[templates]
+template-base.kywa.io
