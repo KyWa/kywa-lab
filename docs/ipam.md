@@ -10,5 +10,3 @@
 10.0.0.22 services.kywa.io
 10.0.0.25 mineops-0.kywa.io
 10.0.0.26 mineops-1.kywa.io
-10.0.0.30 api.okd.kywa.io
-10.0.0.31 *.apps.okd.kywa.io

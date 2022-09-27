@@ -1,6 +1,11 @@
+[media:children]
+plex
+
+[plex]
+plex.kywa.io
+
 [games:children]
 minecraft
 
 [minecraft]
 mc.kywa.io
-mineops-0.kywa.io

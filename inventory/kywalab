@@ -1,4 +1,4 @@
-[all_lab:children]
+[lab:children]
 ovirt
 vms
 nas

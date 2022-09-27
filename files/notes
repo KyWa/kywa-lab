@@ -1,5 +1,0 @@
-current router does not support wildcards
-need to add each OKD route
-cluster needs:
-- console-openshift-console.apps.okd.kywa.io
-- api.okd.kywa.io

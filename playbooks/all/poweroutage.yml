@@ -1,6 +1,8 @@
 ---
+# Usage: ansible-playbook -i inventory/kywalab playbooks/all/poweroutage.yml
+
 - name: Power Outage preparation
-  hosts: lab
+  hosts: vms
   gather_facts: false
   tasks:
   - name: Shutdown VMs
