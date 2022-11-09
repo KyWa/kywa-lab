@@ -1,0 +1,14 @@
+---
+# Usage: ansible-playbook -i inventory/kywalab playbooks/all/poweroutage-up.yml
+
+- name: Power Outage Reconcilliation
+  hosts: vms
+  gather_facts: false
+  tasks:
+  - name: oVirt maintenance mode
+    shell: "hosted-engine --set-maintenance --mode=none && hosted-engine --vm-start"
+    when: inventory_hostname == vhost1.kywa.io
+
+  - name: Pause for hosted-engine
+    pause:
+      seconds: 60
