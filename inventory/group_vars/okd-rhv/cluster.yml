@@ -1,6 +1,0 @@
-# Place all cluster specific variables here
-openshift_cluster_domain: "kywa.io"
-openshift_cluster_name: "okd"
-
-openshift_api_vip: 10.0.0.30
-openshift_ingress_vip: 10.0.0.31

@@ -6,15 +6,6 @@
 - hosts: plex
   gather_facts: false
   tasks:
-  - name: ovirt-auth
-    import_role:
-      name: ovirt
-
-  - name: create-vm
-    import_role:
-      name: ovirt
-      tasks_from: create-vm.yml
-
   - name: Create Plex Dir
     file:
       state: directory
@@ -32,7 +23,7 @@
       name: nfs-utils
       state: latest
 
-  - name:
+  - name: Mount plex dir
     mount:
       path: /plex
       src: "nas01.kywa.io:/volume1/plex"
@@ -60,12 +51,14 @@
       remote_src: true
       src: "/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Codecs"
       dest: /tmp/Codecs
+    ignore_errors: true
 
   - name: Symlink Codecs
     file:
       state: link
       src: /tmp/Codecs
       dest: "/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Codecs" 
+    ignore_errors: true
 
   - name: SELinux Restorecon
     shell: restorecon -R /var/lib/plexmediaserver
@@ -74,6 +67,3 @@
     systemd:
       name: plexmediaserver
       state: restarted
-
-  collections:
-  - ovirt.ovirt

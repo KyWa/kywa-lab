@@ -8,7 +8,6 @@
 - hosts: plex
   gather_facts: false
   tasks:
-
   - name: backup Systemd unit
     copy:
       remote_src: yes

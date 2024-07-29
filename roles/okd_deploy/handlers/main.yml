@@ -1,5 +1,0 @@
----
-- name: display_kubeadmin_password
-  debug:
-    msg: "{{ kubeadmin_password }}"
-

@@ -1,8 +1,0 @@
----
-- name: Install pre-requisites
-  include_tasks: dnsname_plugin_pre_reqs.yml
-  when: container_dev == true
-
-- name: Container Plugin setup
-  include_tasks: dnsname_plugin.yml
-  when: container_dev == true

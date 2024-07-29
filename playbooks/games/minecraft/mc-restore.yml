@@ -8,7 +8,6 @@
 - hosts: minecraft
   gather_facts: false
   tasks:
-
   - name: mount backup share
     mount:
       path: /mnt

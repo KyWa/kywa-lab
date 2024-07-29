@@ -1,8 +1,0 @@
-[okd:children]
-okd-rhv
-
-[okd-rhv]
-localhost ansible_connection=local
-
-[hosted_engine]
-ovirt.kywa.io

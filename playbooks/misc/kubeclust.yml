@@ -1,4 +1,0 @@
----
-- hosts: services.kywa.io
-  roles:
-  - thulium_drake.k8s
